@@ -4,9 +4,13 @@
 qsort([]) ->
     [];
 qsort([Pivot | T]) ->
-    qsort([X || X <- T, X < Pivot]) ++
-        [Pivot] ++
-        qsort([X || X <- T, X >= Pivot]).
+    begin
+        io:fwrite("~w", [Pivot]),
+        % io:format(T),
+        qsort([X || X <- T, X < Pivot]) ++
+            [Pivot] ++
+            qsort([X || X <- T, X >= Pivot])
+    end.
 
 pythag(N) ->
     [
